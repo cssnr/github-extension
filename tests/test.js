@@ -98,22 +98,22 @@ async function getPage(browser, name, log, size) {
     page = await getPage(browser, 'popup.html')
     console.log('page:', page)
     await page.waitForNetworkIdle()
-    await page.screenshot(ssOpts('popup2'))
+    await page.screenshot(ssOpts('github1'))
 
     // await page.locator('#toggle-site').click()
     // await page.screenshot(ssOpts('github2'))
 
     // Options
-    // await worker.evaluate('chrome.runtime.openOptionsPage();')
+    await worker.evaluate('chrome.runtime.openOptionsPage();')
     page = await getPage(browser, 'options.html')
     console.log('page:', page)
     await page.waitForNetworkIdle()
     await page.screenshot(ssOpts('options1'))
     // await page.locator('.fa-regular.fa-trash-can').click()
-    // await page.keyboard.press('Enter')
+    // // await page.keyboard.press('Enter')
     // await new Promise((resolve) => setTimeout(resolve, 500))
     // await page.screenshot(ssOpts('options2'))
-    // await page.close()
 
+    await page.close()
     await browser.close()
 })()
