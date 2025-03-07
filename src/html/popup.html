@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GitHub Extension</title>
+    <link rel="icon" href="../images/logo16.png" sizes="any">
+    <link rel="stylesheet" type="text/css" href="../dist/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../dist/fontawesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/popup.css">
+    <script type="text/javascript" src="../js/theme.js"></script>
+</head>
+<body>
+
+<div class="container-fluid p-2">
+    <div class="d-flex flex-row align-items-center">
+        <div class="dropdown">
+            <a class="link-body-emphasis text-decoration-none" id="bs-theme-dropdown" title="Theme Switcher" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+                <i id="theme-icon" class="fa-solid fa-circle-half-stroke fa-lg" style="min-width: 20px;"></i> <i class="fa-solid fa-caret-down fa-xs mx-1"></i></a>
+            <ul class="dropdown-menu auto dropdown-menu-end" aria-labelledby="bs-theme-dropdown">
+                <li><button class="dropdown-item" data-bs-theme-value="dark" aria-pressed="false">
+                    <i class="fa-regular fa-moon" style="min-width: 16px;"></i> <span class="ms-3">Dark</span></button></li>
+                <li><button class="dropdown-item" data-bs-theme-value="light" aria-pressed="false">
+                    <i class="fa-solid fa-sun" style="min-width: 16px;"></i> <span class="ms-3">Light</span></button></li>
+                <li><button class="dropdown-item" data-bs-theme-value="auto" aria-pressed="false">
+                    <i class="fa-solid fa-circle-half-stroke" style="min-width: 16px;"></i> <span class="ms-3">Auto</span></button></li>
+            </ul>
+        </div>
+
+        <div class="flex-fill text-center">
+            <a class="link-body-emphasis text-decoration-none fs-4" title="Home Page" href="homepage_url">
+                <img src="../images/logo32.png" alt="Logo" class="mb-1" style="height: 1.1em;">
+                GitHub Ext</a>
+            <a class="link-body-emphasis text-decoration-none small" title="Release Notes" href="version_url">
+                v<span class="version"></span></a>
+        </div>
+
+        <div class="">
+            <a class="btn btn-sm btn-outline-warning" role="button" href="../html/sidepanel.html" title="Side Panel">
+                <i class="fa-solid fa-table-columns"></i></a>
+        </div>
+        <div class="ms-2">
+            <a class="btn btn-sm btn-outline-info" role="button" href="../html/options.html" title="Options">
+                <i class="fa-solid fa-gears"></i></a>
+        </div>
+    </div> <!-- d-flex -->
+</div> <!-- container-fluid -->
+
+<hr class="my-0">
+
+<div class="container-fluid p-3">
+
+    <div class="d-none grant-perms mb-2">
+        <button class="btn btn-lg btn-success w-100 hvr-grow-sm mb-1 grant-permissions" type="button"
+                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
+                data-bs-title="This Extension Requires Host Permissions to Function.">
+            <i class="fa-solid fa-check-double me-1"></i> Grant Host Permissions</button>
+        <p class="text-center mb-0"><a href="../html/permissions.html" class="">
+            More Information on Permissions</a></p>
+        <hr>
+    </div> <!-- grant-perms -->
+
+    <div id="logged-in" class="alert alert-warning p-2 d-none">
+        Not Logged In to GitHub!
+    </div>
+
+    <div id="repo" class="border border-secondary border-2 rounded p-1 pb-0 mb-2 text-center ">
+        <kbd class="text-center text-ellipsis d-inline-block">
+            No Repo Found in Current Tab
+        </kbd> <!-- repo -->
+    </div>
+
+    <div class="d-grid g-2 gap-2">
+        <button id="clone-repository" class="btn btn-sm btn-success d-flex align-items-center hvr-grow-sm disabled" data-action="clone">
+            <i class="fa-solid fa-code-fork me-1"></i>
+            <span class="flex-fill text-center me-4">Clone Repository</span>
+        </button>
+        <button id="mirror-repository" class="btn btn-sm btn-primary d-flex align-items-center hvr-grow-sm disabled" data-action="mirror">
+            <i class="fa-solid fa-clone me-1"></i>
+            <span class="flex-fill text-center me-4">Mirror Repository</span>
+        </button>
+
+        <hr class="my-1">
+<!--        <button id="inject-script" class="btn btn-sm btn-outline-warning d-flex align-items-center hvr-grow-sm has-perms tab-perms">-->
+<!--            <i class="fa-solid fa-code me-1"></i>-->
+<!--            <span class="flex-fill text-center me-4">Inject Script</span>-->
+<!--        </button>-->
+
+        <a class="btn btn-sm btn-outline-warning d-flex align-items-center hvr-grow-sm" href="../html/sidepanel.html">
+            <i class="fa-solid fa-table-columns me-1"></i>
+            <span class="flex-fill text-center me-4">Open Side Panel</span>
+        </a>
+
+        <a class="btn btn-sm btn-outline-info d-flex align-items-center hvr-grow-sm" href="../html/page.html">
+            <i class="fa-regular fa-id-card me-1"></i>
+            <span class="flex-fill text-center me-4">Open Extension Page</span>
+        </a>
+        <a class="btn btn-sm btn-outline-info d-flex align-items-center hvr-grow-sm" href="../html/panel.html">
+            <i class="fa-regular fa-window-maximize me-1"></i>
+            <span class="flex-fill text-center me-4">Open Extension Panel</span>
+        </a>
+    </div> <!-- d-grid -->
+
+    <hr>
+
+    <form id="options-form" class="">
+        <div class="form-check form-switch">
+            <input class="form-check-input" id="contextMenu" type="checkbox" role="switch">
+            <label class="form-check-label" for="contextMenu">Enable Right Click Menu</label>
+            <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="Show Context Menu on Right Click."></i>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" id="showUpdate" type="checkbox" role="switch">
+            <label class="form-check-label" for="showUpdate">Show Release Notes on Update</label>
+            <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="Show Release Notes on Version Update."></i>
+        </div>
+    </form> <!-- options-form -->
+
+<!--    <a class="btn btn-sm btn-outline-info w-100" href="../html/options.html">-->
+<!--        <i class="fa-solid fa-sliders me-1"></i> Open Options</a>-->
+<!--    <hr>-->
+<!--    <div class="d-flex justify-content-center align-items-center text-center small">-->
+<!--        <img src="../images/logo16.png" width="16" height="16" alt="GitHub Extension" title="GitHub Extension">-->
+<!--        <a class="link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-75-hover mx-2" rel="noopener"-->
+<!--           href="homepage_url">GitHub Extension</a> v<span class="version"></span>-->
+<!--    </div>-->
+
+</div> <!-- container-fluid -->
+
+<div aria-live="polite" aria-atomic="true" class="">
+    <div id="toast-container" class="toast-container bottom-0 end-0 p-3"></div>
+</div> <!-- toast -->
+
+<div id="clone" class="d-none">
+    <div class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="6000">
+        <div class="d-flex">
+            <div class="toast-body text-break small"></div>
+        </div>
+    </div>
+</div> <!-- clone -->
+
+<script type="text/javascript" src="../dist/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
+<script type="module" src="../js/popup.js"></script>
+
+</body>
+</html>

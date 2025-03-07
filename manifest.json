@@ -1,0 +1,78 @@
+{
+  "name": "GitHub Extension",
+  "description": "GitHub Extension with Specific Features.",
+  "homepage_url": "https://github.com/cssnr/github-extension",
+  "author": "Shane",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "permissions": [
+    "activeTab",
+    "clipboardWrite",
+    "contextMenus",
+    "cookies",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": ["https://github.com/*", "https://codeberg.org/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["js/content/github.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://codeberg.org/*"],
+      "js": ["js/content/codeberg.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "background": { "type": "module" },
+  "options_ui": {
+    "page": "html/options.html",
+    "open_in_tab": true
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+A"
+      },
+      "description": "Show Popup Action"
+    },
+    "openOptions": {
+      "description": "Open Options Page"
+    },
+    "openSidePanel": {
+      "suggested_key": {
+        "default": "Alt+Shift+W"
+      },
+      "description": "Open Side Panel"
+    },
+    "openExtPanel": {
+      "suggested_key": {
+        "default": "Alt+Shift+X"
+      },
+      "description": "Open Extension Panel"
+    },
+    "openPage": {
+      "description": "Open Extension Page"
+    }
+  },
+  "action": {
+    "default_popup": "html/popup.html",
+    "default_title": "GitHub Extension",
+    "default_icon": {
+      "16": "images/logo16.png",
+      "32": "images/logo32.png",
+      "48": "images/logo48.png",
+      "96": "images/logo96.png",
+      "128": "images/logo128.png"
+    }
+  },
+  "icons": {
+    "16": "images/logo16.png",
+    "32": "images/logo32.png",
+    "48": "images/logo48.png",
+    "96": "images/logo96.png",
+    "128": "images/logo128.png"
+  }
+}

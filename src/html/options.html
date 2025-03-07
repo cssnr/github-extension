@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GitHub Extension Options</title>
+    <link rel="icon" href="../images/logo16.png" sizes="any">
+    <link rel="stylesheet" type="text/css" href="../dist/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../dist/fontawesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/options.css">
+    <script type="text/javascript" src="../js/theme.js"></script>
+</head>
+<body class="h-100">
+
+<div class="d-flex align-items-center justify-content-center px-1 px-sm-3 h-100">
+<div class="m-auto w-100" style="max-width: 100%;">
+<div class="card w-100 mx-auto my-3" style="max-width: 767px;">
+<div class="card-body">
+    <div class="d-flex justify-content-center align-items-center">
+        <img src="../images/logo48.png" class="me-2" height="48" width="48" alt="GitHub Extension" title="GitHub Extension">
+        <h1>GitHub Extension</h1>
+    </div>
+    <p class="text-center lead">v<span class="version"></span></p>
+
+    <table id="keyboard-shortcuts" class="table table-sm table-borderless table-hover d-none">
+        <caption class="visually-hidden">Keyboard Shortcuts</caption>
+        <thead class="visually-hidden"><tr><th>Description</th><th>Shortcut</th></tr></thead>
+        <tbody></tbody>
+        <tfoot class="d-none">
+        <tr>
+            <td class="bg-transparent"><i class="fa-regular fa-keyboard me-1"></i> <span class="description"></span></td>
+            <td class="bg-transparent text-end" title="Keyboard Shortcut"><kbd>Unknown</kbd></td>
+        </tr>
+        </tfoot>
+    </table>
+
+    <hr class="border border-info border-3">
+
+    <form id="options-form" class="options">
+<!--        <div class="row mb-2">-->
+<!--            <div class="col-12 col-sm-6 mb-2">-->
+<!--                <label for="ghUsername" class="form-label"><i class="fa-brands fa-github me-1"></i> GitHub Username</label>-->
+<!--                <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="For API Authentication."></i>-->
+<!--                <input id="ghUsername" aria-describedby="ghUsernameHelp" placeholder="For Authentication with Token" type="text" class="form-control" autocomplete="off">-->
+<!--                <div class="form-text" id="ghUsernameHelp">-->
+<!--                    <span class="text-danger">Required.</span>-->
+<!--                    GitHub Username for Authentication.-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-12 col-sm-6 mb-2">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="mb-2">-->
+<!--            <label for="ghToken" class="form-label"><i class="fa-solid fa-key me-1"></i> GitHub Access Token</label>-->
+<!--            <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="For API Authentication."></i>-->
+<!--            <input id="ghToken" aria-describedby="ghTokenHelp" placeholder="For Authentication with Username" type="password" class="form-control" autocomplete="off">-->
+<!--            <div class="form-text" id="ghTokenHelp">-->
+<!--                <span class="text-danger">Required.</span>-->
+<!--                GitHub Personal Access Token for Accessing.-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <div class="mb-2">
+            <label for="ghToken" class="form-label"><i class="fa-brands fa-github me-1"></i> GitHub Access Token</label>
+            <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="For API Authentication."></i>
+<!--            <input id="ghToken" aria-describedby="ghTokenHelp" placeholder="For Authentication with Username" type="password" class="form-control" autocomplete="off">-->
+            <div class="input-group col-12">
+                <input placeholder="Access Token" id="ghToken" aria-describedby="ghTokenHelp" type="password" class="form-control" autocomplete="off">
+                <button class="btn btn-outline-success" type="button" data-bs-toggle="tooltip" data-show-hide="#ghToken"
+                        data-bs-placement="bottom" data-bs-trigger="hover" data-bs-title="Show/Hide Auth Token.">
+                    <i class="fa-regular fa-eye"></i>
+                </button>
+                <button class="btn btn-outline-primary" type="button" data-bs-toggle="tooltip"
+                        data-copy-input="#ghToken" data-copy-text="GitHub Token Copied."
+                        data-bs-placement="bottom" data-bs-trigger="hover" data-bs-title="Copy GitHub Token.">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+            <div class="form-text small" id="ghTokenHelp">
+                <a id="gen-gh-token" class="" role="button">Auto Generate Token</a>
+<!--                or-->
+<!--                <a href="https://codeberg.org/user/settings/applications" class="link-body-emphasis" target="_blank">Create Manually</a>-->
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-12 col-sm-6 mb-2">
+                <label for="ghUsername" class="form-label small"><i class="fa-solid fa-signature me-1"></i> GitHub Username</label>
+                <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="GitHub Username from Token."></i>
+                <input id="ghUsername" placeholder="GitHub User Username" type="text" class="form-control form-control-sm" disabled>
+            </div>
+            <div class="col-12 col-sm-6 mb-2">
+                <label for="ghID" class="form-label small"><i class="fa-solid fa-hashtag me-1"></i> GitHub ID</label>
+                <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="GitHub ID from Token."></i>
+                <input id="ghID" placeholder="GitHub User ID" type="text" class="form-control form-control-sm" disabled>
+            </div>
+        </div>
+
+        <hr class="border border-info border-3">
+
+<!--        <div class="row mb-2">-->
+<!--            <div class="col-12 col-sm-6 mb-2">-->
+<!--                <label for="github-login" class="form-label"><i class="fa-brands fa-github me-1"></i> GitHub Username</label>-->
+<!--                <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="For API Authentication."></i>-->
+<!--                <input id="github-login" placeholder="GitHub User Username" type="text" class="form-control" autocomplete="off">-->
+<!--            </div>-->
+<!--            <div class="col-12 col-sm-6 mb-2">-->
+<!--                <label for="github-id" class="form-label"><i class="fa-brands fa-github me-1"></i> GitHub ID</label>-->
+<!--                <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="For API Authentication."></i>-->
+<!--                <input id="github-id" placeholder="GitHub User ID" type="text" class="form-control" autocomplete="off">-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="row mb-2">-->
+<!--            <div class="col-12 col-sm-6 mb-2">-->
+<!--                <label for="cbUsername" class="form-label"><i class="fa-solid fa-code-merge me-1"></i> Codeberg Username</label>-->
+<!--                <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="For API Authentication."></i>-->
+<!--                <input id="cbUsername" aria-describedby="cbUsernameHelp" placeholder="For Authentication with Token" type="text" class="form-control" autocomplete="off">-->
+<!--                <div class="form-text" id="cbUsernameHelp">-->
+<!--                    Codeberg Username for Authentication.-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-12 col-sm-6 mb-2">-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <div class="mb-2">
+            <label for="cbToken" class="form-label"><i class="fa-solid fa-code-merge me-1"></i> Codeberg Access Token</label>
+            <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="For API Authentication."></i>
+<!--            <input id="cbToken" aria-describedby="cbTokenHelp" placeholder="For Authentication with Username" type="password" class="form-control" autocomplete="off">-->
+            <div class="input-group col-12">
+                <input placeholder="Access Token" id="cbToken" aria-describedby="cbTokenHelp" type="password" class="form-control" autocomplete="off">
+                <button class="btn btn-outline-success" type="button" data-bs-toggle="tooltip" data-show-hide="#cbToken"
+                        data-bs-placement="bottom" data-bs-trigger="hover" data-bs-title="Show/Hide Auth Token.">
+                    <i class="fa-regular fa-eye"></i>
+                </button>
+                <button class="btn btn-outline-primary" type="button" data-bs-toggle="tooltip"
+                        data-copy-input="#cbToken" data-copy-text="Codeberg Token Copied."
+                        data-bs-placement="bottom" data-bs-trigger="hover" data-bs-title="Copy Codeberg Token.">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+            <div class="form-text small" id="cbTokenHelp">
+                <a id="gen-cb-token" class="" role="button">Auto Generate Token</a>
+<!--                or-->
+<!--                <a href="https://codeberg.org/user/settings/applications" class="link-body-emphasis" target="_blank">Create Manually</a>-->
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-12 col-sm-6 mb-2">
+                <label for="cbUsername" class="form-label small"><i class="fa-solid fa-signature me-1"></i> Codeberg Username</label>
+                <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="Codeberg Username from Token."></i>
+                <input id="cbUsername" placeholder="Codeberg User Username" type="text" class="form-control form-control-sm" disabled>
+            </div>
+            <div class="col-12 col-sm-6 mb-2">
+                <label for="cbID" class="form-label small"><i class="fa-solid fa-hashtag me-1"></i> Codeberg ID</label>
+                <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="Codeberg ID from Token."></i>
+                <input id="cbID" placeholder="Codeberg User ID" type="text" class="form-control form-control-sm" disabled>
+            </div>
+        </div>
+
+        <hr class="border border-info border-3">
+
+        <div class="row mb-2">
+            <div class="col-12 col-sm-6 mb-2">
+                <label for="defaultCloneUser" class="form-label small"><i class="fa-solid fa-code-fork me-1"></i> Default Clone User</label>
+                <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="Default Clone Username otherwise GitHub Username."></i>
+                <input id="defaultCloneUser" placeholder="Default Clone Username" type="text" class="form-control form-control-sm">
+            </div>
+            <div class="col-12 col-sm-6 mb-2">
+                <label for="defaultMirrorUser" class="form-label small"><i class="fa-solid fa-clone me-1"></i> Default Mirror User</label>
+                <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="Default Mirror Username otherwise GitHub Username."></i>
+                <input id="defaultMirrorUser" placeholder="Default Mirror Username" type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+
+<!--        <div class="mb-2">-->
+<!--            <label for="defaultOwner" class="form-label"><i class="fa-solid fa-user-tag me-1"></i> Default User or Org</label>-->
+<!--            <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="Only if Different from Username."></i>-->
+<!--            <input id="defaultOwner" aria-describedby="defaultOwnerHelp" type="text" placeholder="Default Organization or Username" class="form-control" autocomplete="off">-->
+<!--            <div class="form-text" id="defaultOwnerHelp">-->
+<!--                Default Username for Various Options if Different from Username.-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="row mb-2">-->
+<!--            <div class="col-12 col-sm-8 mb-2">-->
+<!--                <label for="testInput" class="form-label"><i class="fa-regular fa-keyboard me-1"></i> Default User/Org</label>-->
+<!--                <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="Example Text Input."></i>-->
+<!--                <input id="testInput" aria-describedby="testInputHelp" type="text" class="form-control" autocomplete="off">-->
+<!--                <div class="form-text" id="testInputHelp">Just a test text input.</div>-->
+<!--            </div>-->
+<!--            <div class="col-12 col-sm-4  mb-2">-->
+<!--                <label for="testNumber" class="form-label"><i class="fa-solid fa-hashtag me-1"></i> Number</label>-->
+<!--                <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="Example Number Input."></i>-->
+<!--                <input id="testNumber" aria-describedby="testNumberHelp" type="number" step="5" min="5" max="360" class="form-control" autocomplete="off" placeholder="Minutes">-->
+<!--                <div class="form-text" id="testNumberHelp">-->
+<!--                    A number 5-360.-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="form-check form-switch">
+            <input class="form-check-input" id="contextMenu" type="checkbox" role="switch">
+            <label class="form-check-label" for="contextMenu">Enable Right Click Menu</label>
+            <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="Show Context Menu on Right Click."></i>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" id="showUpdate" type="checkbox" role="switch">
+            <label class="form-check-label" for="showUpdate">Show Release Notes on Update</label>
+            <i class="fa-solid fa-circle-info ms-1" data-bs-toggle="tooltip" data-bs-title="Show Release Notes on Version Update."></i>
+        </div>
+    </form>
+
+    <div class="d-none my-2 grant-perms">
+        <button class="btn btn-lg btn-success w-100 mb-2 grant-permissions" type="button"
+                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
+                data-bs-title="This Extension Requires Host Permissions to Function.">
+            <i class="fa-solid fa-check-double me-1"></i> Grant Host Permissions</button>
+        <p class="text-center"><a href="../html/permissions.html">More Information on Permissions</a></p>
+    </div>
+    <div class="d-none my-3 has-perms">
+        <button class="btn btn-link link-danger revoke-permissions" type="button"
+                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
+                data-bs-title="Google Chrome does not allow removing required permissions via this method.">
+            Remove Host Permissions</button>
+    </div>
+
+<!--    <form id="add-host">-->
+<!--        <label class="form-label" for="site"><i class="fa-solid fa-globe me-2"></i> Add Host or Site</label>-->
+<!--        <div class="input-group mb-3">-->
+<!--            <input id="site" type="text" class="form-control" placeholder="Add Host" aria-label="Hostname" aria-describedby="add-host-btn" autocomplete="url" required>-->
+<!--            <button class="btn btn-outline-success" type="submit" id="add-host-btn">-->
+<!--                Add <i class="fa-solid fa-circle-plus ms-1"></i>-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </form>-->
+
+<!--    <div class="mb-1 small">-->
+<!--        <a id="export-hosts" class="link-body-emphasis text-decoration-none import-export" data-action="export" role="button">-->
+<!--            Export <i class="fa-solid fa-file-arrow-down ms-1"></i></a>-->
+<!--        &lt;!&ndash;        <span class="mx-1">/</span>&ndash;&gt;-->
+<!--        <span class="mx-1">&bull;</span>-->
+<!--        <input id="sites-input" type="file" style="display: none;" />-->
+<!--        <a id="import-file" class="link-body-emphasis text-decoration-none import-export" data-action="file" role="button">-->
+<!--            Import File <i class="fa-solid fa-file-arrow-up ms-1"></i></a>-->
+<!--        &lt;!&ndash;        <span class="mx-1">/</span>&ndash;&gt;-->
+<!--        <span class="mx-1">&bull;</span>-->
+<!--        <a class="link-body-emphasis text-decoration-none" role="button" data-bs-toggle="modal" data-bs-target="#import-modal">-->
+<!--            Import Text <i class="fa-solid fa-paste ms-1"></i></a>-->
+<!--    </div>-->
+
+<!--    <table id="hosts-table" class="table table-sm table-hover bg-transparent">-->
+<!--        <caption>Enabled Hosts</caption>-->
+<!--        <thead><tr>-->
+<!--            <th scope="col" class="text-center" style="width: 22px;">-->
+<!--                <i class="fa-solid fa-trash-can"></i>-->
+<!--            </th>-->
+<!--            <th scope="col">Host</th>-->
+<!--            <th scope="col" class="text-center" style="width: 22px;">-->
+<!--                <i class="fa-solid fa-copy"></i>-->
+<!--            </th>-->
+<!--        </tr></thead>-->
+<!--        <tbody></tbody>-->
+<!--    </table>-->
+
+    <p class="fst-italic small mt-3">
+        <a id="copy-support" href="#0">Copy Support Information</a> for issue reporting.
+    </p>
+
+    <hr class="border border-info border-3">
+
+    <div class="text-center">
+        <a class="link-body-emphasis text-decoration-none d-inline-block" target="_blank" rel="noopener"
+           href="homepage_url">Home Page</a>
+        <svg><use xlink:href="#bi-dot" /></svg>
+        <a class="link-body-emphasis text-decoration-none d-inline-block" target="_blank" rel="noopener"
+           href="https://github.com/cssnr/github-extension/discussions/categories/feature-requests">Request Feature</a>
+        <svg><use xlink:href="#bi-dot" /></svg>
+        <a class="link-body-emphasis text-decoration-none d-inline-block" target="_blank" rel="noopener"
+           href="https://github.com/cssnr/github-extension/issues">Open Issue</a>
+    </div>
+</div> <!-- card-body -->
+</div> <!-- card -->
+</div> <!-- flex -->
+</div> <!-- m-auto -->
+
+<!--<div id="import-modal" class="modal fade" tabindex="-1" aria-labelledby="import-modal-label" aria-hidden="true">-->
+<!--<div class="modal-dialog modal-lg modal-dialog-centered">-->
+<!--<div class="modal-content">-->
+<!--    <div class="modal-header">-->
+<!--        <h1 class="modal-title fs-5" id="import-modal-label">Import Credentials</h1>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" tabindex="-1"></button>-->
+<!--    </div>-->
+<!--    <div class="modal-body">-->
+<!--        <div class="">-->
+<!--            <label for="sites-textarea" class="mb-1">-->
+<!--                JSON Import <svg class="ms-1"><use xlink:href="#bi-braces" /></svg>-->
+<!--            </label>-->
+<!--            <textarea id="sites-textarea" class="form-control" placeholder="Paste text to import here..." style="height: 100px"></textarea>-->
+<!--            <div class="invalid-feedback"></div>-->
+<!--            <div>-->
+<!--                For data format, see the <a href="https://github.com/cssnr/auto-auth?tab=readme-ov-file#Migration" target="_blank" rel="noopener">-->
+<!--                Migration Guide</a> on GitHub.-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div> &lt;!&ndash; modal-body &ndash;&gt;-->
+<!--    <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-success me-auto import-export" data-action="text" data-id="sites-textarea">-->
+<!--            Import<i class="fa-solid fa-cloud-arrow-down ms-2"></i>-->
+<!--        </button>-->
+<!--        <button type="button" class="btn btn-outline-warning import-export" data-action="clear" data-id="sites-textarea">Clear</button>-->
+<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>-->
+<!--    </div>-->
+<!--</div> &lt;!&ndash; modal-content &ndash;&gt;-->
+<!--</div> &lt;!&ndash; modal-dialog &ndash;&gt;-->
+<!--</div>&lt;!&ndash; import-modal &ndash;&gt;-->
+
+<button type="button" class="btn btn-outline-primary" id="back-to-top">
+    <i class="fa-regular fa-square-caret-up"></i>
+</button> <!-- back-to-top -->
+
+<div aria-live="polite" aria-atomic="true" class="">
+    <div id="toast-container" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+</div> <!-- toast -->
+
+<div id="clone" class="d-none">
+    <div class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="10000">
+        <div class="toast-body"></div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" id="bi-dot" viewBox="0 0 16 16">
+        <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+    </svg>
+    <svg id="bi-braces" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-braces mb-1 ms-1" viewBox="0 0 16 16">
+        <path d="M2.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C3.25 2 2.49 2.759 2.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6M13.886 7.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V7.332c-1.114 0-1.49-.362-1.49-1.456V4.352C13.51 2.759 12.75 2 11.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6"/>
+    </svg>
+    <i class="fa-regular fa-trash-can"></i>
+    <i class="fa-regular fa-copy"></i>
+</div> <!-- clone -->
+
+<script type="text/javascript" src="../dist/clipboard/clipboard.min.js"></script>
+<script type="text/javascript" src="../dist/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="../dist/axios/axios.js"></script>
+<script type="module" src="../js/main.js"></script>
+<script type="module" src="../js/options.js"></script>
+
+</body>
+</html>

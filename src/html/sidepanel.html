@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GitHub Extension Side Panel</title>
+    <link rel="icon" href="../images/logo16.png" sizes="any">
+    <link rel="stylesheet" type="text/css" href="../dist/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../dist/fontawesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <script type="text/javascript" src="../js/theme.js"></script>
+</head>
+<body class="d-flex flex-column h-100">
+
+<header class="flex-shrink-0">
+<div class="container-fluid p-2">
+    <div class="d-flex flex-row align-items-center">
+        <div class="dropdown">
+            <a class="link-body-emphasis text-decoration-none" id="bs-theme-dropdown" title="Theme Switcher" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+                <i id="theme-icon" class="fa-solid fa-circle-half-stroke fa-lg" style="min-width: 20px;"></i> <i class="fa-solid fa-caret-down fa-xs mx-1"></i></a>
+            <ul class="dropdown-menu auto dropdown-menu-end" aria-labelledby="bs-theme-dropdown">
+                <li><button class="dropdown-item" data-bs-theme-value="dark" aria-pressed="false">
+                    <i class="fa-regular fa-moon" style="min-width: 16px;"></i> <span class="ms-3">Dark</span></button></li>
+                <li><button class="dropdown-item" data-bs-theme-value="light" aria-pressed="false">
+                    <i class="fa-solid fa-sun" style="min-width: 16px;"></i> <span class="ms-3">Light</span></button></li>
+                <li><button class="dropdown-item" data-bs-theme-value="auto" aria-pressed="false">
+                    <i class="fa-solid fa-circle-half-stroke" style="min-width: 16px;"></i> <span class="ms-3">Auto</span></button></li>
+            </ul>
+        </div>
+
+        <div class="flex-fill text-center">
+            <a class="link-body-emphasis text-decoration-none fs-4" title="Home Page" href="homepage_url">
+                <img src="../images/logo32.png" alt="Logo" class="mb-1" style="height: 1.1em;">
+                GitHub Ext.</a>
+            <a class="link-body-emphasis text-decoration-none small" title="Release Notes" href="version_url">
+                v<span class="version"></span></a>
+        </div>
+
+        <div class="">
+            <a class="btn btn-sm btn-outline-info" role="button" href="../html/options.html" title="Options">
+                <i class="fa-solid fa-gears"></i></a>
+        </div>
+    </div> <!-- d-flex -->
+</div> <!-- container-fluid -->
+</header>
+
+<hr class="my-0">
+
+<main class="flex-grow-1">
+<div class="container-fluid p-3">
+    <div class="d-flex align-items-center">
+        <h1>Repository List</h1>
+        <a title="Refresh" class="link-warning ms-auto refresh-panel" role="button">
+            <i class="fa-solid fa-rotate fa-xl auto"></i></a>
+    </div>
+    <table id="repos-table" class="table table-sm table-hover bg-transparent w-100 mb-0">
+        <caption>Repositories Table</caption>
+        <thead><tr>
+            <th scope="col">Repository</th>
+            <th scope="col" class="text-center" style="width: 22px;">
+                <i class="fa-solid fa-code-fork"></i>
+            </th>
+            <th scope="col" class="text-center" style="width: 22px;">
+                <i class="fa-solid fa-clone"></i>
+            </th>
+        </tr></thead>
+        <tbody></tbody>
+    </table>
+
+    <div id="table-loading" class="text-center">
+        <i class="fa-solid fa-hourglass-start fa-beat-fade fa-xl" style="--fa-beat-fade-opacity: 0.1; --fa-beat-fade-scale: 1.25;"></i>
+    </div>
+
+    <div class="alert alert-danger p-2 d-none" role="alert">
+        <div class="fw-bold"></div>
+        <hr class="mb-2">
+        <p class="mb-0">
+            Manage Settings from the
+            <span class="d-inline-block"><a href="../html/options.html" target="_blank">Options Page</a>.</span>
+        </p>
+    </div>
+</div>
+</main>
+
+<footer class="flex-shrink-0">
+<div class="container-fluid mb-2">
+    <div class="row">
+        <div class="col-12">
+            <a class="btn btn-outline-info w-100 close-panel" role="button">
+                Close Panel <i class="fa-regular fa-circle-xmark ms-1"></i></a>
+        </div>
+    </div>
+</div>
+</footer>
+
+<div aria-live="polite" aria-atomic="true" class="">
+    <div id="toast-container" class="toast-container bottom-0 end-0 p-3"></div>
+</div> <!-- toast -->
+
+<div id="clone" class="d-none">
+    <div class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="6000">
+        <div class="d-flex">
+            <div class="toast-body text-break small"></div>
+        </div>
+    </div>
+    <i class="fa-regular fa-clone"></i>
+    <i class="fa-solid fa-code-fork"></i>
+</div> <!-- clone -->
+
+<script type="text/javascript" src="../dist/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
+<!--<script type="module" src="../dist/octokit-bundle.js"></script>-->
+<script type="text/javascript" src="../dist/axios/axios.js"></script>
+<script type="module" src="../js/sidepanel.js"></script>
+
+</body>
+</html>
