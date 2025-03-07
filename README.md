@@ -1,11 +1,11 @@
-[![GitHub Repo Stars](https://img.shields.io/github/stars/cssnr/github-extension?style=flat&logo=github&logoColor=white)](https://github.com/cssnr/github-extension/stargazers)
-[![GitHub Release Version](https://img.shields.io/github/v/release/cssnr/github-extension?logo=github)](https://github.com/cssnr/github-extension/releases/latest)
 [![Build](https://img.shields.io/github/actions/workflow/status/cssnr/github-extension/build.yaml?logo=github&logoColor=white&label=build)](https://github.com/cssnr/github-extension/actions/workflows/build.yaml)
 [![Test](https://img.shields.io/github/actions/workflow/status/cssnr/github-extension/test.yaml?logo=github&logoColor=white&label=test)](https://github.com/cssnr/github-extension/actions/workflows/test.yaml)
 [![Lint](https://img.shields.io/github/actions/workflow/status/cssnr/github-extension/lint.yaml?logo=github&logoColor=white&label=lint)](https://github.com/cssnr/github-extension/actions/workflows/lint.yaml)
+[![GitHub Release Version](https://img.shields.io/github/v/release/cssnr/github-extension?logo=github)](https://github.com/cssnr/github-extension/releases/latest)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=cssnr_github-extension&metric=alert_status&label=quality)](https://sonarcloud.io/summary/overall?id=cssnr_github-extension)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/cssnr/github-extension?logo=github&logoColor=white&label=updated)](https://github.com/cssnr/github-extension/graphs/commit-activity)
 [![GitHub Top Language](https://img.shields.io/github/languages/top/cssnr/github-extension?logo=htmx&logoColor=white)](https://github.com/cssnr/github-extension)
+[![GitHub Repo Stars](https://img.shields.io/github/stars/cssnr/github-extension?style=flat&logo=github&logoColor=white)](https://github.com/cssnr/github-extension/stargazers)
 [![GitHub Org Stars](https://img.shields.io/github/stars/cssnr?style=flat&logo=github&logoColor=white&label=org%20stars)](https://cssnr.github.io/)
 [![Discord](https://img.shields.io/discord/899171661457293343?logo=discord&logoColor=white&label=discord&color=7289da)](https://discord.gg/wXy6m2X8wY)
 
