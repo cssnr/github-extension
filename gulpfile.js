@@ -37,7 +37,13 @@ gulp.task('jquery', () => {
         .pipe(gulp.dest('src/dist/jquery'))
 })
 
+gulp.task('mustache', () => {
+    return gulp
+        .src('node_modules/mustache/mustache.mjs')
+        .pipe(gulp.dest('src/dist/mustache'))
+})
+
 gulp.task(
     'default',
-    gulp.parallel('bootstrap', 'clipboard', 'fontawesome', 'jquery')
+    gulp.parallel('bootstrap', 'clipboard', 'fontawesome', 'jquery', 'mustache')
 )

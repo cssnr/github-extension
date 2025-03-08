@@ -1,6 +1,6 @@
 // JS for sidepanel.html
 
-// import { Octokit } from '../../dist/octokit/bundle.js'
+// import { Octokit } from '../../dist/octokit/octokit.js'
 import { Github } from '../api/github.js'
 import mustache from '../../dist/mustache/mustache.mjs'
 
@@ -160,7 +160,9 @@ async function mirrorRepo(event) {
 async function closePanel(event) {
     console.debug('closePanel:', event)
     event?.preventDefault()
+    // noinspection JSUnresolvedReference
     if (typeof browser !== 'undefined') {
+        // noinspection JSUnresolvedReference
         await browser.sidebarAction.close()
     } else {
         window.close()

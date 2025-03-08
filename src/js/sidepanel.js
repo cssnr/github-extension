@@ -3,6 +3,7 @@
 import {
     handleAction,
     linkClick,
+    openPopup,
     showToast,
     updateManifest,
     updateOptions,
@@ -25,6 +26,9 @@ document
 document
     .querySelectorAll('a[href]')
     .forEach((el) => el.addEventListener('click', linkClick))
+document
+    .querySelectorAll('.open-popup')
+    .forEach((el) => el.addEventListener('click', openPopup))
 
 /**
  * DOMContentLoaded

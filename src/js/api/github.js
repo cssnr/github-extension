@@ -1,4 +1,4 @@
-import { Octokit } from '../../dist/octokit/bundle.js'
+import { Octokit } from '../../dist/octokit/octokit.js'
 
 // import _sodium from '../../dist/libsodium/libsodium.js'
 

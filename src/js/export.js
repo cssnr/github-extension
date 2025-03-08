@@ -346,6 +346,22 @@ export async function openSidePanel(event, url = '/html/sidepanel.html') {
 }
 
 /**
+ * Open Popup Click Callback
+ * @function openPopup
+ * @param {Event} [event]
+ */
+export async function openPopup(event) {
+    console.debug('openPopup:', event)
+    event?.preventDefault()
+    // Note: This fails if popup is already open (ex. double clicks)
+    try {
+        await chrome.action.openPopup()
+    } catch (e) {
+        console.debug(e)
+    }
+}
+
+/**
  * Show Bootstrap Toast
  * @function showToast
  * @param {String} message
@@ -415,6 +431,7 @@ export async function injectScript() {
  */
 export function copyActiveElementText(ctx) {
     console.debug('copyActiveElementText:', ctx)
+    // noinspection JSUnresolvedReference
     let text =
         ctx.linkText?.trim() ||
         document.activeElement.innerText?.trim() ||
@@ -589,10 +606,12 @@ export function handleAction(event) {
     if (action === 'clone') {
         console.debug('%c Clone the NAGGERS', 'color: Yellow')
         url.searchParams.append('action', 'clone')
+        // noinspection JSIgnoredPromiseFromCall
         openSidePanel(null, url.href)
     } else if (action === 'mirror') {
         console.debug('%c Mirror the DIGGERS', 'color: Lime')
         url.searchParams.append('action', 'mirror')
+        // noinspection JSIgnoredPromiseFromCall
         openSidePanel(null, url.href)
     } else {
         console.warn(`Unknown Action: ${action}`)

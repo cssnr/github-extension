@@ -1,5 +1,7 @@
 // JS for page.html
 
+import axios from '../dist/axios/axios.js'
+
 import {
     checkPerms,
     grantPerms,
@@ -37,4 +39,22 @@ async function domContentLoaded() {
     chrome.storage.sync.get(['options']).then((items) => {
         console.debug('options:', items.options)
     })
+    axios
+        .get('https://httpbin.org/get')
+        .then(function (response) {
+            console.log('response:', response)
+        })
+        .catch(function (error) {
+            // handle error
+            console.log('error:', error)
+        })
+        .finally(function () {
+            console.log('done')
+        })
+    // try {
+    //     const response = await axios.get('https://httpbin.org/get')
+    //     console.debug('response.data:', response.data)
+    // } catch (e) {
+    //     console.log('error:', e)
+    // }
 }
