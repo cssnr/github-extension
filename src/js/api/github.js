@@ -105,7 +105,7 @@ export class Github {
         console.debug('key_id:', key_id)
         console.debug('key:', key)
 
-        const url = 'https://intranet.cssnr.com/github/encrypt'
+        const url = 'https://api-dev.cssnr.com/github/encrypt'
         const options = {
             method: 'POST',
             body: JSON.stringify({ key, secret }),
